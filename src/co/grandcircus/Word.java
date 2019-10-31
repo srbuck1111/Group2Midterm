@@ -13,6 +13,8 @@ public class Word {
 	public Word(String word) {
 		super();
 		
+		word = word.toLowerCase();
+		
 		char[] wordArr = word.toCharArray();
 		
 		for (char c : wordArr) {
@@ -52,6 +54,16 @@ public class Word {
 		}
 		
 		return true;
+		
+	}
+	
+	public void resetStatus() {
+		
+		for (Letter l : characters) {
+			
+			l.setFound(false);
+			
+		}
 		
 	}
 
