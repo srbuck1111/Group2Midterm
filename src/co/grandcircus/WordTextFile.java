@@ -10,13 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-
-
-
 public class WordTextFile {
 
 	ArrayList<Word> getWords = new ArrayList<>();
-	
+
 	public static void createOurFile() {
 
 		String fileName = "Words.txt";
@@ -54,6 +51,10 @@ public class WordTextFile {
 		}
 
 	}
+	
+	
+	
+	
 }
 
 /*
