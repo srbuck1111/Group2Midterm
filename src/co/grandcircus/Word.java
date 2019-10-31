@@ -64,7 +64,7 @@ public class Word {
 			
 			if (c.isFound()) {
 				
-				word += c + " ";
+				word += c.toString() + " ";
 				
 			} else {
 				

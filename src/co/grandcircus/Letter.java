@@ -25,5 +25,10 @@ public class Letter {
 	public void setFound(boolean found) {
 		this.found = found;
 	}
+
+	@Override
+	public String toString() {
+		return "" + letter;
+	}
 	
 }
