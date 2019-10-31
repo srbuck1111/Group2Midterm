@@ -20,7 +20,9 @@ public class HangmanMain {
 		String userName;
 		String returningPlayer;
 		String cont = "";
-		
+		String userGuess;
+		String newWord;
+
 		Word word = new Word("Hello");
 
 		System.out.println("Welcome to Hangman!");
@@ -40,11 +42,24 @@ public class HangmanMain {
 			System.out.println("Welcome " + userName);
 		}
 		do {
-			System.out.println(word.toString());
-			
+			System.out.println("Word: " + word.toString());
+
+			do {
+
+				userGuess = Validator.getStringMatchingRegex(scnr, "Guess a letter: ", "^[a-zA-Z]");
+
+				word.hasChar(userGuess);
+				System.out.println(word.toString());
+			} while (!word.wordCompleted(word));
+
 			cont = Validator.getString(scnr, "Would you like to play again? (y/n)");
+			word.resetStatus();
 
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
+		
+		
+		newWord = Validator.getString(scnr, "Could you help out by giving us a single word");
+		newWord = newWord.toLowerCase();
 
 		System.out.println("Thank you for playing!");
 
