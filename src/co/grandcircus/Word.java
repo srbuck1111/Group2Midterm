@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 public class Word {
 
-	private ArrayList<Letter> characters;
+	private ArrayList<Letter> characters = new ArrayList<>();;
 
+	public Word() {
+		super();
+	}
+	
 	public Word(String word) {
 		super();
 		
