@@ -23,7 +23,9 @@ public class Word {
 
 	}
 	
-	public void hasChar(char c) {
+	public void hasChar(String s) {
+		
+		char c = s.charAt(0);
 		
 		for (Letter i : characters) {
 			
