@@ -1,8 +1,10 @@
 package co.grandcircus;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -51,16 +53,31 @@ public class WordTextFile {
 		}
 
 	}
-	
-	
-	
-	
-}
 
-/*
- * public ArrayList<Word> getGetWords() { return getWords; }
- * 
- * public void setGetWords(ArrayList<Word> getWords) { this.getWords = getWords;
- * }
- * 
- */
+	public static ArrayList<Word> readFromFile() {
+		ArrayList<Word> wordsInFile = new ArrayList<>();
+		String fileName = "Words.txt";
+		Path path = Paths.get(fileName);
+		File file = path.toFile();
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+			while (line != null) {
+				wordsInFile.add(new Word(line));
+				line = br.readLine();
+
+			}
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Something went wrong with the file");
+		} catch (IOException e) {
+			System.out.println("Something went wrong when we tried to read from the file");
+		} finally {
+
+		}
+		return wordsInFile;
+
+	}
+}
