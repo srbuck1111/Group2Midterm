@@ -60,6 +60,7 @@ public class HangmanMain {
 		
 		newWord = Validator.getString(scnr, "Could you help out by giving us a single word");
 		newWord = newWord.toLowerCase();
+		words.add(new Word(newWord));
 
 		System.out.println("Thank you for playing!");
 
