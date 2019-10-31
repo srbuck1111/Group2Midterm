@@ -48,7 +48,8 @@ public class PlayerTextFile {
 			}
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Something went wrong.");
+			System.out.println("File not found. Creating file.");
+			createOurPlayerFile();
 		} finally {
 			output.close();
 		}

@@ -47,7 +47,8 @@ public class WordTextFile {
 			output.println(word);
 			output.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Something went wrong.");
+			System.out.println("File not found. Creating file.");
+			createOurFile();
 		} finally {
 			output.close();
 		}
