@@ -9,22 +9,20 @@ public class HangmanMain {
 	public static void main(String[] args) {
 
 		Scanner scnr = new Scanner(System.in);
-		
+
 		List<Word> words = new ArrayList<>();
 		List<Player> players = new ArrayList<>();
+		Player currentPlayer = null;
 		words = WordTextFile.readFromFile();
 		players = PlayerTextFile.getPlayers();
-		players.add(new Player("swithin", 2, 3));
-		players.add(new Player("brandon", 2, 3));
 		words.add(new Word("Hello"));
-		List<Character> missedChars = new ArrayList<>();
+		List<String> missedChars = new ArrayList<>();
 		int userNum;
 		String userName;
 		String returningPlayer;
 		String cont = "";
 		String userGuess;
 		String newWord;
-
 
 		System.out.println("Welcome to Hangman!");
 
@@ -36,14 +34,19 @@ public class HangmanMain {
 			userNum = Validator.getInt(scnr,
 					"Welcome back! what was your username? Please enter the corresponding number:  ", 1,
 					players.size());
+			currentPlayer = players.get(userNum - 1);
 			System.out.println();
 		} else {
 			userName = Validator.getString(scnr, "What would you like me to call you? ");
-			players.add(new Player(userName));
+			currentPlayer = new Player(userName);
+			players.add(currentPlayer);
 			System.out.println("Welcome " + userName);
 		}
+
+		
+		
 		do {
-			
+
 			Word word = selectWord(words);
 			System.out.println("Word: " + word.toString());
 
@@ -51,21 +54,40 @@ public class HangmanMain {
 
 				userGuess = Validator.getStringMatchingRegex(scnr, "Guess a letter: ", "^[a-zA-Z]");
 
-				word.hasChar(userGuess);
-				System.out.println(word.toString());
-			} while (!word.wordCompleted(word));
+				if (!word.hasChar(userGuess)) {
+					missedChars.add(userGuess);
+				}
 
-			cont = Validator.getString(scnr, "Would you like to play again? (y/n)");
+				System.out.println(word.toString());
+
+				System.out.println(missedChars);
+
+			} while (!word.wordCompleted(word) && missedChars.size() < 6);
+
+			if (missedChars.size() >= 6) {
+
+				System.out.println("You idiot, the word was " + word.toWordString() + ".");
+				currentPlayer.addLoss();
+				
+			} else {
+				
+				currentPlayer.addWin();
+				
+			}
+			
+			missedChars.clear();
 			word.resetStatus();
 
+			cont = Validator.getString(scnr, "Would you like to play again? (y/n)");
+
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
-		
-		
-		newWord = Validator.getString(scnr, "Could you help out by giving us a single word");
+
+		newWord = Validator.getString(scnr, "Could you help out by giving us a single word:\n");
 		newWord = newWord.toLowerCase();
-		
+
 		WordTextFile.writeWord(new Word(newWord).toWordString());
-		
+		PlayerTextFile.writePlayers(players);
+
 		System.out.println("Thank you for playing!");
 
 	}

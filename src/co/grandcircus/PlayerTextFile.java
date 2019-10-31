@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerTextFile {
 
@@ -32,7 +33,7 @@ public class PlayerTextFile {
 
 	}
 
-	public static void writePlayers(ArrayList<Player> player) {
+	public static void writePlayers(List<Player> players) {
 
 		String fileName = "Players.txt";
 		Path path1 = Paths.get(fileName);
@@ -41,11 +42,11 @@ public class PlayerTextFile {
 		PrintWriter output = null;
 
 		try {
-			output = new PrintWriter(new FileOutputStream(file, true));
-			for (Player p : player) {
+			output = new PrintWriter(new FileOutputStream(file, false));
+			for (Player p : players) {
 				output.println(p);
-				output.close();
 			}
+			output.close();
 
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found. Creating file.");

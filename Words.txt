@@ -1,3 +1,11 @@
 Hello
 Goodbye
 farewell
+greetings
+javabootcamp
+thanks
+loser
+winner
+ties
+no
+idiot
