@@ -54,13 +54,7 @@ public class PlayerTextFile {
 		}
 	}
 
-	public ArrayList<Player> getPlayers() {
-		ArrayList<Player> players = new ArrayList<>();
-
-		return players;
-	}
-
-	public static ArrayList<Player> readFromFile() {
+	public static ArrayList<Player> getPlayers() {
 		ArrayList<Player> playersInFile = new ArrayList<>();
 		String fileName = "Players.txt";
 		Path path = Paths.get(fileName);
@@ -70,8 +64,7 @@ public class PlayerTextFile {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = br.readLine();
 			while (line != null) {
-				converStringToPlayer(line);
-				System.out.println(line);
+				playersInFile.add(converStringToPlayer(line));
 				line = br.readLine();
 			}
 			br.close();
