@@ -1,31 +1,51 @@
 package co.grandcircus;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Word {
 
-	private char[] characters;
+	private ArrayList<Letter> characters;
 
 	public Word(String word) {
 		super();
-		this.characters = word.toCharArray();
+		
+		char[] wordArr = word.toCharArray();
+		
+		for (char c : wordArr) {
+			
+			characters.add(new Letter(c));
+			
+		}
+
 	}
 	
-	public boolean hasChar(char c) {
+	public void hasChar(char c) {
 		
-		return false;
-		
-	}
-	
-	public boolean charFound(char c) {
-		
-		return false;
+		for (Letter i : characters) {
+			
+			if (c == i.getLetter()) {
+				
+				i.setFound(true);;
+				
+			}
+			
+		}
 		
 	}
 	
 	public boolean wordCompleted(Word word) {
 		
-		return false;
+		for (Letter c: characters) {
+			
+			if (!c.isFound()) {
+				
+				return false;
+				
+			}
+			
+		}
+		
+		return true;
 		
 	}
 
@@ -34,9 +54,9 @@ public class Word {
 
 		String word = "";
 		
-		for (char c : characters) {
+		for (Letter c : characters) {
 			
-			if (charFound(c)) {
+			if (c.isFound()) {
 				
 				word += c + " ";
 				
