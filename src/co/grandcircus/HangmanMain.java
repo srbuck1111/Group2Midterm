@@ -20,6 +20,8 @@ public class HangmanMain {
 		String userName;
 		String returningPlayer;
 		String cont = "";
+		
+		Word word = new Word("Hello");
 
 		System.out.println("Welcome to Hangman!");
 
@@ -38,7 +40,8 @@ public class HangmanMain {
 			System.out.println("Welcome " + userName);
 		}
 		do {
-
+			System.out.println(word.toString());
+			
 			cont = Validator.getString(scnr, "Would you like to play again? (y/n)");
 
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
