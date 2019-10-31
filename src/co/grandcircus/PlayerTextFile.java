@@ -1,8 +1,10 @@
 package co.grandcircus;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -11,8 +13,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class PlayerTextFile {
-
-	ArrayList<Player> Player = new ArrayList<>();
 
 	public static void createOurPlayerFile() {
 
@@ -54,11 +54,42 @@ public class PlayerTextFile {
 		}
 	}
 
-	public ArrayList<Player> getPlayer() {
-		return Player;
+	public ArrayList<Player> getPlayers() {
+		ArrayList<Player> players = new ArrayList<>();
+		
+		return players;
 	}
 
-	public void setPlayer(ArrayList<Player> player) {
-		Player = player;
+	public static ArrayList<Player> readFromFile() {
+		ArrayList<Player> playersInFile = new ArrayList<>();
+		String fileName = "Players.txt";
+		Path path = Paths.get(fileName);
+		File file = path.toFile();
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+			while (line != null) {
+				converStringToPlayer(line);
+				System.out.println(line);
+				line = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException fnfe) {
+			// TODO Auto-generated catch block
+			fnfe.printStackTrace();
+		} catch (IOException e) {
+
+		} finally {
+
+		}
+		return playersInFile;
 	}
+
+
+// need to add players input to the list
+public static Player converStringToPlayer(String p) {
+	String[]pArr = p.split(",");
+	return new Player(pArr[0], Integer.parseInt(pArr[1]), Integer.parseInt(pArr[2]));
+}
 }
