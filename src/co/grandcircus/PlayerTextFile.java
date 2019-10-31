@@ -56,7 +56,7 @@ public class PlayerTextFile {
 
 	public ArrayList<Player> getPlayers() {
 		ArrayList<Player> players = new ArrayList<>();
-		
+
 		return players;
 	}
 
@@ -86,10 +86,9 @@ public class PlayerTextFile {
 		return playersInFile;
 	}
 
-
 // need to add players input to the list
-public static Player converStringToPlayer(String p) {
-	String[]pArr = p.split(",");
-	return new Player(pArr[0], Integer.parseInt(pArr[1]), Integer.parseInt(pArr[2]));
-}
+	public static Player converStringToPlayer(String p) {
+		String[] pArr = p.split(",");
+		return new Player(pArr[0], Integer.parseInt(pArr[1]), Integer.parseInt(pArr[2]));
+	}
 }
