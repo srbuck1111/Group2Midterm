@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Word {
 
-	private ArrayList<Letter> characters = new ArrayList<>();;
+	private ArrayList<Letter> letters = new ArrayList<>();;
 
 	public Word() {
 		super();
@@ -19,7 +19,7 @@ public class Word {
 		
 		for (char c : wordArr) {
 			
-			characters.add(new Letter(c));
+			letters.add(new Letter(c));
 			
 		}
 
@@ -29,7 +29,7 @@ public class Word {
 		
 		char c = s.charAt(0);
 		
-		for (Letter i : characters) {
+		for (Letter i : letters) {
 			
 			if (c == i.getLetter()) {
 				
@@ -43,7 +43,7 @@ public class Word {
 	
 	public boolean wordCompleted(Word word) {
 		
-		for (Letter c: characters) {
+		for (Letter c: letters) {
 			
 			if (!c.isFound()) {
 				
@@ -59,7 +59,7 @@ public class Word {
 	
 	public void resetStatus() {
 		
-		for (Letter l : characters) {
+		for (Letter l : letters) {
 			
 			l.setFound(false);
 			
@@ -72,7 +72,7 @@ public class Word {
 
 		String word = "";
 		
-		for (Letter c : characters) {
+		for (Letter c : letters) {
 			
 			if (c.isFound()) {
 				
@@ -83,6 +83,20 @@ public class Word {
 				word += "_ ";
 				
 			}
+			
+		}
+		
+		return word;
+		
+	}
+	
+	public String toWordString() {
+		
+		String word = "";
+		
+		for (Letter l : letters) {
+			
+			word += l.getLetter();
 			
 		}
 		

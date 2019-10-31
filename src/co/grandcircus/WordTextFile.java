@@ -34,7 +34,7 @@ public class WordTextFile {
 
 	}
 
-	public static void writeWord(Word word) {
+	public static void writeWord(String word) {
 
 		String fileName = "Words.txt";
 		Path path1 = Paths.get(fileName);
@@ -73,7 +73,6 @@ public class WordTextFile {
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Something went wrong with the file");
-			createOurFile();
 		} catch (IOException e) {
 			System.out.println("Something went wrong when we tried to read from the file");
 		} finally {

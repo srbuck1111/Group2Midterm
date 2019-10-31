@@ -70,8 +70,8 @@ public class PlayerTextFile {
 			}
 			br.close();
 		} catch (FileNotFoundException fnfe) {
-			// TODO Auto-generated catch block
-			fnfe.printStackTrace();
+			System.out.println("File not found. Creating file.");
+			createOurPlayerFile();
 		} catch (IOException e) {
 
 		} finally {
