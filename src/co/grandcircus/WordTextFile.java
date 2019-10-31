@@ -73,6 +73,7 @@ public class WordTextFile {
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Something went wrong with the file");
+			createOurFile();
 		} catch (IOException e) {
 			System.out.println("Something went wrong when we tried to read from the file");
 		} finally {
