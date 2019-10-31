@@ -11,19 +11,19 @@ public class Word {
 		this.characters = word.toCharArray();
 	}
 	
-	public boolean hasChar() {
+	public boolean hasChar(char c) {
 		
 		return false;
 		
 	}
 	
-	public boolean charFound() {
+	public boolean charFound(char c) {
 		
 		return false;
 		
 	}
 	
-	public boolean wordCompleted() {
+	public boolean wordCompleted(Word word) {
 		
 		return false;
 		
@@ -31,7 +31,25 @@ public class Word {
 
 	@Override
 	public String toString() {
-		return "Word [characters=" + Arrays.toString(characters) + "]";
+
+		String word = "";
+		
+		for (char c : characters) {
+			
+			if (charFound(c)) {
+				
+				word += c + " ";
+				
+			} else {
+				
+				word += "_ ";
+				
+			}
+			
+		}
+		
+		return word;
+		
 	}
 	
 }
