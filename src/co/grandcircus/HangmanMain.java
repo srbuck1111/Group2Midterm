@@ -91,7 +91,7 @@ public class HangmanMain {
 
 			} else {
 
-				System.out.println("Wow. you actually guessed " + word.toWordString() + ". Color me suprised.");
+				System.out.println("Wow. you actually guessed " + "'" + word.toWordString() + "'" + ". Color me suprised.");
 				currentPlayer.addWin();
 
 			}
@@ -103,7 +103,7 @@ public class HangmanMain {
 
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
 
-		newWord = Validator.getString(scnr, "Could you help out by giving us a single word:\n");
+		newWord = Validator.getStringMatchingRegex(scnr, "Could you help out by giving us a single word:\n", "^[a-zA-Z]{3,}");
 		newWord = newWord.toLowerCase();
 
 		WordTextFile.writeWord(new Word(newWord).toWordString());
