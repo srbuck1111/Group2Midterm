@@ -7,7 +7,11 @@ import java.util.Scanner;
 public class HangmanMain {
 
 	public static void main(String[] args) {
+
 WordTextFile.createOurFile();
+
+
+
 		Scanner scnr = new Scanner(System.in);
 
 		List<Word> words = new ArrayList<>();
@@ -42,8 +46,12 @@ WordTextFile.createOurFile();
 			System.out.println("Welcome " + userName);
 		}
 		
+
 		int difficultyChoice = Validator.getInt(scnr, "What difficulty would you like to play?\n1.Easy\n2.Medium\n3.Hard", 1, 3);
 		words = WordTextFile.readFromFile(difficultyChoice-1);
+
+		
+
 
 		do {
 
@@ -116,7 +124,10 @@ WordTextFile.createOurFile();
 
 	public static Word selectWord(List<Word> words) {
 
+
 		return words.get(Dice.roll(words.size()) - 1);
+
+
 
 	}
 
