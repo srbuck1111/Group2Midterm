@@ -115,6 +115,20 @@ public class Word {
 	}
 	
 	public int getDifficulty() {
+
+		if (letters.size() < 5) {
+			
+			difficulty = 0;
+			
+		} else if (letters.size() < 10) {
+			
+			difficulty = 1;
+			
+		} else {
+			
+			difficulty = 2;
+			
+		}
 		
 		return difficulty;
 		
