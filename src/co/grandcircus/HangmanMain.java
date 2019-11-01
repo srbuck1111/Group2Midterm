@@ -47,22 +47,43 @@ public class HangmanMain {
 		do {
 
 			Word word = selectWord(words);
-			System.out.println("Word: " + word.toString());
 
 			do {
-
+//Start UI
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				
+				HangMan.printMan(missedChars.size());
+				
+				System.out.println(word.toString());
+				
+				System.out.print("missed letters:");
+				for (String l : missedChars) {
+					System.out.print(" " + l);
+				}
+				System.out.println("\n");
+				
 				userGuess = Validator.getStringMatchingRegex(scnr, "Guess a letter: ", "^[a-zA-Z]");
+				System.out.println();
 
 				if (!word.hasChar(userGuess)) {
 					missedChars.add(userGuess);
 				}
-
-				System.out.println(word.toString());
-
-				System.out.println(missedChars);
-
+				
+//End UI
 			} while (!word.wordCompleted(word) && missedChars.size() < 6);
 
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			
+			HangMan.printMan(missedChars.size());
+			
+			System.out.println(word.toString());
+			
+			System.out.print("missed letters:");
+			for (String l : missedChars) {
+				System.out.print(" " + l);
+			}
+			System.out.println("\n");
+			
 			if (missedChars.size() >= 6) {
 
 				System.out.println("You idiot, the word was " + word.toWordString() + ".");
@@ -70,6 +91,7 @@ public class HangmanMain {
 
 			} else {
 
+				System.out.println("Wow. you actually guessed " + word.toWordString() + ". Color me suprised.");
 				currentPlayer.addWin();
 
 			}
