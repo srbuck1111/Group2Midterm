@@ -97,6 +97,8 @@ public class Word {
 	
 	public String toWordString() {
 		
+		System.out.println("test");
+		
 		String word = "";
 		
 		for (Letter l : letters) {
