@@ -15,10 +15,17 @@ import java.util.ArrayList;
 public class WordTextFile {
 
 	ArrayList<Word> getWords = new ArrayList<>();
+static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"};
 
 	public static void createOurFile() {
+		
+	String fileName = "";  //getDifficultyFileName();
 
-		String fileName = "Words.txt";
+	for (int i = 0; i <= 2; i++)
+	{fileName = fileNamesArr[i];
+	
+		
+	}
 		Path path = Paths.get(fileName);
 
 		if (Files.notExists(path)) {
@@ -35,8 +42,8 @@ public class WordTextFile {
 	}
 
 	public static void writeWord(String word) {
-
-		String fileName = "Words.txt";
+		Word wordObj = new Word(word);
+		String fileName = getDifficultyFileName(wordObj.getDifficulty());
 		Path path1 = Paths.get(fileName);
 
 		File file = path1.toFile();
@@ -55,9 +62,10 @@ public class WordTextFile {
 
 	}
 
-	public static ArrayList<Word> readFromFile() {
+	public static ArrayList<Word> readFromFile(int intDiff) {
 		ArrayList<Word> wordsInFile = new ArrayList<>();
-		String fileName = "Words.txt";
+		
+		String fileName = fileNamesArr[intDiff];
 		Path path = Paths.get(fileName);
 		File file = path.toFile();
 
@@ -81,4 +89,21 @@ public class WordTextFile {
 		return wordsInFile;
 
 	}
+	public static String getDifficultyFileName (int difficulty) {
+	
+		String fileName = "";
+		if (difficulty == 0) {
+		fileName = "Words.txt";
+	}
+	else if (difficulty == 1) {
+		fileName = "mediumwords.txt";
+		}
+	else if (difficulty == 2) {
+		fileName = "hardwords.txt";
+	
+	}
+		
+		return fileName;
+	}
+	
 }
