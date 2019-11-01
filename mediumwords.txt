@@ -6,3 +6,5 @@ cereal
 hangman
 michigan
 glove
+party
+volcano
