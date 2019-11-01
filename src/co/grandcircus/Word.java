@@ -25,19 +25,24 @@ public class Word {
 
 	}
 	
-	public void hasChar(String s) {
+	public boolean hasChar(String s) {
 		
 		char c = s.charAt(0);
+		boolean b = false;
 		
 		for (Letter i : characters) {
 			
 			if (c == i.getLetter()) {
 				
-				i.setFound(true);;
+				i.setFound(true);
+				
+				b = true;
 				
 			}
 			
 		}
+		
+		return b;
 		
 	}
 	

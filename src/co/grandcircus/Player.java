@@ -4,7 +4,7 @@ public class Player {
 
 	private String name;
 	private int wins;
-	private int loses;
+	private int losses;
 	
 	
 	public Player(String name) {
@@ -16,11 +16,11 @@ public class Player {
 
 	}
 
-	public Player(String name, int wins, int loses) {
+	public Player(String name, int wins, int losses) {
 		super();
 		this.name = name;
 		this.wins = wins;
-		this.loses = loses;
+		this.losses = losses;
 	}
 
 	public String getName() {
@@ -42,16 +42,24 @@ public class Player {
 	}
 
 	public int getLoses() {
-		return loses;
+		return losses;
 	}
 
 	public void setLoses(int loses) {
-		this.loses = loses;
+		this.losses = loses;
 	}
-
+	
+	public void addWin() {
+		this.wins++;
+	}
+	
+	public void addLoss() {
+		this.losses++;
+	}
+	
 	@Override
 	public String toString() {
-		return name + "," + wins + "," + loses;
+		return name + "," + wins + "," + losses;
 	}
 
 }
