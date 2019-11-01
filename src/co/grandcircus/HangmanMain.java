@@ -29,7 +29,8 @@ public class HangmanMain {
 		returningPlayer = Validator.getString(scnr, "Are you a returning player? ");
 		if (returningPlayer.equalsIgnoreCase("Yes") || returningPlayer.equalsIgnoreCase("y")) {
 			for (int i = 0; i < players.size(); i++) {
-				System.out.println((i + 1) + ". " + players.get(i));
+				System.out.println((i + 1) + ". " + players.get(i).toPlayer());
+
 			}
 			userNum = Validator.getInt(scnr,
 					"Welcome back! what was your username? Please enter the corresponding number:  ", 1,
@@ -43,8 +44,6 @@ public class HangmanMain {
 			System.out.println("Welcome " + userName);
 		}
 
-		
-		
 		do {
 
 			Word word = selectWord(words);
@@ -68,13 +67,13 @@ public class HangmanMain {
 
 				System.out.println("You idiot, the word was " + word.toWordString() + ".");
 				currentPlayer.addLoss();
-				
+
 			} else {
-				
+
 				currentPlayer.addWin();
-				
+
 			}
-			
+
 			missedChars.clear();
 			word.resetStatus();
 

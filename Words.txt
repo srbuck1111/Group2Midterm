@@ -9,4 +9,6 @@ winner
 ties
 no
 idiot
-
+word
+losing
+dictionary
