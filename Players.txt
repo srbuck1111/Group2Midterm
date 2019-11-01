@@ -1,4 +1,4 @@
-sean,8,1
-swithin,3,1
+sean,10,1
+swithin,4,2
 brandon,2,0
 Matt,2,20001
