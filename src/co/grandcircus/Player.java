@@ -49,20 +49,20 @@ public class Player {
 		this.loses = loses;
 	}
 	
-	public void addWin() {
+	public void addWin() { //incrementing wins
 		this.wins++;
 	}
 	
-	public void addLoss() {
+	public void addLoss() {//incrementing losses
 		this.loses++;
 	}
 	
-	public String toPlayer() {
+	public String toPlayer() { // printing the array list of players, wins, and loses in a better looking format
 		return "Name: " + name + " Wins: " + wins + " Losses: " + loses;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() {// printing the same list in a different format to the players.txt file
 		return name + "," + wins + "," + loses;
 	}
 
