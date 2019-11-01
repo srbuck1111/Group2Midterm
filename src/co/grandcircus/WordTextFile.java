@@ -25,7 +25,7 @@ static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"
 	{fileName = fileNamesArr[i];
 	
 		
-	}
+	
 		Path path = Paths.get(fileName);
 
 		if (Files.notExists(path)) {
@@ -36,9 +36,9 @@ static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"
 				System.out.println("Something went wrong...file not created.");
 			}
 		} else {
-			System.out.println("The file already exists!");
+			//System.out.println("The file already exists!");
 		}
-
+	}
 	}
 
 	public static void writeWord(String word) {
