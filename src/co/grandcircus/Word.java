@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Word {
 
-	private ArrayList<Letter> letters = new ArrayList<>();;
+	private ArrayList<Letter> letters = new ArrayList<>();
+	private int difficulty;
 
 	public Word() {
 		super();
@@ -92,6 +93,12 @@ public class Word {
 		}
 		
 		return word;
+		
+	}
+	
+	public int getDifficulty() {
+		
+		return 0;
 		
 	}
 	

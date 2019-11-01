@@ -14,3 +14,5 @@ losing
 dictionary
 xylophone
 pneumonoultramicroscopicsilicovolcanoconiosis
+easy
+goodbye
