@@ -23,7 +23,7 @@ public class Word {
 			letters.add(new Letter(c));
 			
 		}
-
+		
 	}
 	
 	public boolean hasChar(String s) {
@@ -96,9 +96,27 @@ public class Word {
 		
 	}
 	
+	public void setDifficulty() {
+		
+		if (letters.size() < 5) {
+			
+			difficulty = 0;
+			
+		} else if (letters.size() < 10) {
+			
+			difficulty = 1;
+			
+		} else {
+			
+			difficulty = 2;
+			
+		}
+		
+	}
+	
 	public int getDifficulty() {
 		
-		return 0;
+		return difficulty;
 		
 	}
 	
