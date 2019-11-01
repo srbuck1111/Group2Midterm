@@ -13,9 +13,7 @@ public class HangmanMain {
 		List<Word> words = new ArrayList<>();
 		List<Player> players = new ArrayList<>();
 		Player currentPlayer = null;
-		words = WordTextFile.readFromFile();
 		players = PlayerTextFile.getPlayers();
-		words.add(new Word("Hello"));
 		List<String> missedChars = new ArrayList<>();
 		int userNum;
 		String userName;
@@ -43,6 +41,9 @@ public class HangmanMain {
 			players.add(currentPlayer);
 			System.out.println("Welcome " + userName);
 		}
+		
+		int difficultyChoice = Validator.getInt(scnr, "What difficulty would you like to play?\n1.Easy\n2.Medium\n3.Hard", 0, 2);
+		words = WordTextFile.readFromFile(difficultyChoice);
 
 		do {
 
