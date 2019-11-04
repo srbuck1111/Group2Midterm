@@ -15,6 +15,7 @@ import java.util.List;
 
 public class PlayerTextFile {
 
+	//Creates player file if it doesn't exist
 	public static void createOurPlayerFile() {
 
 		String fileName = "Players.txt";
@@ -33,6 +34,7 @@ public class PlayerTextFile {
 
 	}
 
+	//Writes to the player file
 	public static void writePlayers(List<Player> players) {
 
 		String fileName = "Players.txt";
@@ -56,6 +58,7 @@ public class PlayerTextFile {
 		}
 	}
 
+	//Gets and returns players from player.txt file
 	public static ArrayList<Player> getPlayers() {
 		ArrayList<Player> playersInFile = new ArrayList<>();
 		String fileName = "Players.txt";
@@ -81,7 +84,7 @@ public class PlayerTextFile {
 		return playersInFile;
 	}
 
-// need to add players input to the list
+//Converts String line to create new PLayer object
 	public static Player converStringToPlayer(String p) {
 		String[] pArr = p.split(",");
 		return new Player(pArr[0], Integer.parseInt(pArr[1]), Integer.parseInt(pArr[2]));

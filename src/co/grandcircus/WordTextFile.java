@@ -15,32 +15,34 @@ import java.util.ArrayList;
 public class WordTextFile {
 
 	ArrayList<Word> getWords = new ArrayList<>();
-static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"};
+
+	// Array to hold different level difficulty file names
+	static String[] fileNamesArr = { "Words.txt", "mediumwords.txt", "hardwords.txt" };
 
 	public static void createOurFile() {
-		
-	String fileName = "";  //getDifficultyFileName();
 
-	for (int i = 0; i <= 2; i++)
-	{fileName = fileNamesArr[i];
-	
-		
-	
-		Path path = Paths.get(fileName);
+		String fileName = "";
 
-		if (Files.notExists(path)) {
-			try {
-				Files.createFile(path);
-				System.out.println("The file was created successfully");
-			} catch (IOException e) {
-				System.out.println("Something went wrong...file not created.");
+		// Creates file on user's computer if it doesn't already exist, depending on difficulty level.
+		for (int i = 0; i <= 2; i++) {
+			fileName = fileNamesArr[i];
+
+			Path path = Paths.get(fileName);
+
+			if (Files.notExists(path)) {
+				try {
+					Files.createFile(path);
+					System.out.println("The file was created successfully");
+				} catch (IOException e) {
+					System.out.println("Something went wrong...file not created.");
+				}
+			} else {
+
 			}
-		} else {
-			//System.out.println("The file already exists!");
 		}
 	}
-	}
 
+	// Writes to corresponding word text file based on difficulty level
 	public static void writeWord(String word) {
 		Word wordObj = new Word(word);
 		String fileName = getDifficultyFileName(wordObj.getDifficulty());
@@ -62,9 +64,10 @@ static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"
 
 	}
 
+//Reads from corresponding word files depending on difficulty level selected
 	public static ArrayList<Word> readFromFile(int intDiff) {
 		ArrayList<Word> wordsInFile = new ArrayList<>();
-		
+
 		String fileName = fileNamesArr[intDiff];
 		Path path = Paths.get(fileName);
 		File file = path.toFile();
@@ -89,21 +92,21 @@ static String [] fileNamesArr = {"Words.txt", "mediumwords.txt", "hardwords.txt"
 		return wordsInFile;
 
 	}
-	public static String getDifficultyFileName (int difficulty) {
-	
+
+	// Returns difficulty file name based on difficulty level
+	public static String getDifficultyFileName(int difficulty) {
+
 		String fileName = "";
 		if (difficulty == 0) {
-		fileName = "Words.txt";
-	}
-	else if (difficulty == 1) {
-		fileName = "mediumwords.txt";
+			fileName = "Words.txt";
+		} else if (difficulty == 1) {
+			fileName = "mediumwords.txt";
+		} else if (difficulty == 2) {
+			fileName = "hardwords.txt";
+
 		}
-	else if (difficulty == 2) {
-		fileName = "hardwords.txt";
-	
-	}
-		
+
 		return fileName;
 	}
-	
+
 }
