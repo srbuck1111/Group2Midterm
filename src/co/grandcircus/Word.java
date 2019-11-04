@@ -114,8 +114,6 @@ public class Word {
 		
 	}
 	
-	//Im mad
-	
 	public int getDifficulty() {
 
 		if (letters.size() < 5) {

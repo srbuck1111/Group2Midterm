@@ -110,10 +110,13 @@ public class HangmanMain {
 
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
 
-		newWord = Validator.getStringMatchingRegex(scnr, "Could you help out by giving us a single word:\n",
-				"^[a-zA-Z]{3,}");
-		newWord = newWord.toLowerCase();
-
+		newWord = Validator.getStringMatchingRegex(scnr, "Could you help out by giving us a single word: (or enter no if you're uncreative)\n",
+				"^[a-zA-Z]{3,}|(no)");
+		
+		if (!newWord.equals("no")) {
+			newWord = newWord.toLowerCase();
+		}
+		
 		WordTextFile.writeWord(new Word(newWord).toWordString());
 		PlayerTextFile.writePlayers(players);
 
