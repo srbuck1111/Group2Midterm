@@ -8,9 +8,7 @@ public class HangmanMain {
 
 	public static void main(String[] args) {
 
-WordTextFile.createOurFile();
-
-
+		WordTextFile.createOurFile();
 
 		Scanner scnr = new Scanner(System.in);
 
@@ -45,54 +43,53 @@ WordTextFile.createOurFile();
 			players.add(currentPlayer);
 			System.out.println("Welcome " + userName);
 		}
-		
 
-		int difficultyChoice = Validator.getInt(scnr, "What difficulty would you like to play?\n1.Easy\n2.Medium\n3.Hard", 1, 3);
-		words = WordTextFile.readFromFile(difficultyChoice-1);
-
-		if (difficultyChoice == 1) {
-			System.out.println("Typical.");
-		}
-		
 		do {
+			int difficultyChoice = Validator.getInt(scnr,
+					"What difficulty would you like to play?\n1.Easy\n2.Medium\n3.Hard", 1, 3);
+			words = WordTextFile.readFromFile(difficultyChoice - 1);
+
+			if (difficultyChoice == 1) {
+				System.out.println("Typical.");
+			}
 
 			Word word = selectWord(words);
 
 			do {
 //Start UI
 				HangMan.printMan(missedChars.size());
-				
+
 				System.out.println(word.toString());
-				
+
 				System.out.print("missed letters:");
 				for (String l : missedChars) {
 					System.out.print(" " + l);
 				}
 				System.out.println("\n");
-				
+
 				userGuess = Validator.getStringMatchingRegex(scnr, "Guess a letter: ", "^[a-zA-Z]");
 				System.out.println();
 
 				if (!word.hasChar(userGuess)) {
 					missedChars.add(userGuess);
 				}
-				
+
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 //End UI
 			} while (!word.wordCompleted(word) && missedChars.size() < 6);
 
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			
+
 			HangMan.printMan(missedChars.size());
-			
+
 			System.out.println(word.toString());
-			
+
 			System.out.print("missed letters:");
 			for (String l : missedChars) {
 				System.out.print(" " + l);
 			}
 			System.out.println("\n");
-			
+
 			if (missedChars.size() >= 6) {
 
 				System.out.println("You idiot, the word was " + word.toWordString() + ".");
@@ -100,7 +97,8 @@ WordTextFile.createOurFile();
 
 			} else {
 
-				System.out.println("Wow. you actually guessed " + "'" + word.toWordString() + "'" + ". Color me suprised.");
+				System.out.println(
+						"Wow. you actually guessed " + "'" + word.toWordString() + "'" + ". Color me suprised.");
 				currentPlayer.addWin();
 
 			}
@@ -112,7 +110,8 @@ WordTextFile.createOurFile();
 
 		} while (cont.equalsIgnoreCase("yes") || cont.equalsIgnoreCase("y"));
 
-		newWord = Validator.getStringMatchingRegex(scnr, "Could you help out by giving us a single word:\n", "^[a-zA-Z]{3,}");
+		newWord = Validator.getStringMatchingRegex(scnr, "Could you help out by giving us a single word:\n",
+				"^[a-zA-Z]{3,}");
 		newWord = newWord.toLowerCase();
 
 		WordTextFile.writeWord(new Word(newWord).toWordString());
@@ -124,10 +123,7 @@ WordTextFile.createOurFile();
 
 	public static Word selectWord(List<Word> words) {
 
-
 		return words.get(Dice.roll(words.size()) - 1);
-
-
 
 	}
 
