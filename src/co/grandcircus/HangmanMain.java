@@ -57,6 +57,8 @@ public class HangmanMain {
 
 			do {
 //Start UI
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				
 				HangMan.printMan(missedChars.size());
 
 				System.out.println(word.toString());
@@ -73,8 +75,6 @@ public class HangmanMain {
 				if (!word.hasChar(userGuess)) {
 					missedChars.add(userGuess);
 				}
-
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 //End UI
 			} while (!word.wordCompleted(word) && missedChars.size() < 6);
 

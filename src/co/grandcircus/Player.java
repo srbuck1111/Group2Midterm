@@ -5,8 +5,7 @@ public class Player {
 	private String name;
 	private int wins;
 	private int loses;
-	
-	
+
 	public Player(String name) {
 		this.name = name;
 	}
@@ -48,17 +47,18 @@ public class Player {
 	public void setLoses(int loses) {
 		this.loses = loses;
 	}
-	
-	public void addWin() { //incrementing wins
+
+	public void addWin() { // incrementing wins
 		this.wins++;
 	}
-	
-	public void addLoss() {//incrementing losses
+
+	public void addLoss() {// incrementing losses
 		this.loses++;
 	}
-	
-	public String toPlayer() { // printing the array list of players, wins, and loses in a better looking format
-		return "Name: " + name + " Wins: " + wins + " Losses: " + loses;
+
+	public String toPlayer() { // printing the array list of players, wins, and loses in a better looking
+								// format
+		return String.format("Name: %-12s Wins: %-6d Losses: %-6d Win Percentage: %-3.2f", name, wins, loses, (((double) wins/((double) wins + (double) loses)) * 100));
 	}
 
 	@Override
