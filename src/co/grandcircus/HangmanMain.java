@@ -28,7 +28,7 @@ WordTextFile.createOurFile();
 
 		System.out.println("Welcome to Hangman!");
 
-		returningPlayer = Validator.getString(scnr, "Are you a returning player? ");
+		returningPlayer = Validator.getString(scnr, "Are you a returning player? (y/n)");
 		if (returningPlayer.equalsIgnoreCase("Yes") || returningPlayer.equalsIgnoreCase("y")) {
 			for (int i = 0; i < players.size(); i++) {
 				System.out.println((i + 1) + ". " + players.get(i).toPlayer());
@@ -50,17 +50,16 @@ WordTextFile.createOurFile();
 		int difficultyChoice = Validator.getInt(scnr, "What difficulty would you like to play?\n1.Easy\n2.Medium\n3.Hard", 1, 3);
 		words = WordTextFile.readFromFile(difficultyChoice-1);
 
+		if (difficultyChoice == 1) {
+			System.out.println("Typical.");
+		}
 		
-
-
 		do {
 
 			Word word = selectWord(words);
 
 			do {
 //Start UI
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-				
 				HangMan.printMan(missedChars.size());
 				
 				System.out.println(word.toString());
@@ -78,6 +77,7 @@ WordTextFile.createOurFile();
 					missedChars.add(userGuess);
 				}
 				
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 //End UI
 			} while (!word.wordCompleted(word) && missedChars.size() < 6);
 

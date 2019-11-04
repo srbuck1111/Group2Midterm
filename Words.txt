@@ -2,7 +2,8 @@ Hello
 Goodbye
 farewell
 greetings
-javabootcamp
+java
+bootcamp
 thanks
 loser
 winner
@@ -11,7 +12,5 @@ no
 idiot
 word
 losing
-dictionary
-xylophone
 pneumonoultramicroscopicsilicovolcanoconiosis
 easy
